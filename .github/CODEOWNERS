@@ -191,3 +191,7 @@
 /src/redisenterprise/ @greenms
 
 /src/cloudservice/ @qwordy
+/src/azext_webpubsub/ @zackliu
+/src/azext_webpubsub/ @zackliu
+/src/azext_webpubsub-data/ @zackliu
+/src/azext_webpubsubdata/ @zackliu
