@@ -6,6 +6,6 @@
 from knack.util import CLIError
 
 
-def broadcast(cmd, client, resource_group_name, webpubsubdata_name, location=None, tags=None):
-    raise CLIError('TODO: Implement `webpubsubdata create`')
+def broadcast(cmd, client, resource_group_name, webpubsubhub_name, location=None, tags=None):
+    raise CLIError('TODO: Implement `webpubsubhub create`')
 
