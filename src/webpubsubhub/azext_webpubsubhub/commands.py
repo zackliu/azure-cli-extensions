@@ -20,7 +20,7 @@ def load_command_table(self, _):
         client_factory=cf_webpubsubhub)
 
     with self.command_group('webpubsubhub', client_sdk) as g:
-        g.command('start_client', 'start_client')
+        g.command('start-client', 'start_client')
 
 
     with self.command_group('webpubsubhub service', server_sdk) as g:

@@ -85,7 +85,6 @@ def build_authentication_token(endpoint, hub, key, **kwargs):
         payload["role"] = roles
 
     token = jwt.encode(payload, key, algorithm="HS256").decode('UTF-8')
-    print(token)
     return {
         "baseUrl": client_url,
         "token": token,
