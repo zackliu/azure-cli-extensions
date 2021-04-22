@@ -18,7 +18,30 @@ def load_arguments(self, _):
         c.argument('tags', tags_type)
         c.argument('location', validator=get_default_location_from_resource_group)
         c.argument('webpubsub_name', webpubsubhub_name_type, options_list=['--name', '-n'])
-        c.argument('hub_name')
+        c.argument('hub_name', help='The hub name.')
 
-    with self.argument_context('webpubsubhub list') as c:
-        c.argument('webpubsub_name', webpubsubhub_name_type, id_part=None)
+    for scope in ['webpubsubhub service connection',
+                  'webpubsubhub service permission',
+                  'webpubsubhub service group add-connection',
+                  'webpubsubhub service group remove-connection']:
+        with self.argument_context(scope) as c:
+            c.argument('connection_id', options_list=['--connection-id', '-c'], help='The client connection id.')
+
+    for scope in ['webpubsubhub service broadcast',
+                  'webpubsubhub service connection send',
+                  'webpubsubhub service group send',
+                  'webpubsubhub service user send']:
+        with self.argument_context(scope) as c:
+            c.argument('payload', help='The payload to send.')
+
+    for scope in ['webpubsubhub service group',
+                  'webpubsubhub service permission']:
+        with self.argument_context(scope) as c:
+            c.argument('group_name', help='The group name.')
+    
+    for scope in ['webpubsubhub service user', 'webpubsubhub service group add-user', 'webpubsubhub service group remove-user']:
+        with self.argument_context(scope) as c:
+            c.argument('user_id', help='The user id.')
+
+    with self.argument_context('webpubsubhub service permission') as c:
+            c.argument('permission', help='The permission.')
