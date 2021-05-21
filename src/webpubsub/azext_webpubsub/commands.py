@@ -70,6 +70,7 @@ def load_command_table(self, _):
 
     with self.command_group('webpubsub client', webpubsub_client_utils) as g:
         g.command('start', 'start_client')
+        g.command('generate-token', 'generate_token')
 
     with self.command_group('webpubsub service', webpubsub_service_utils) as g:
         g.command('broadcast', 'broadcast')

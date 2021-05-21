@@ -60,6 +60,11 @@ def load_arguments(self, _):
     with self.argument_context('webpubsub client') as c:
         c.argument('hub_name', help='The hub which client connects to')
 
+    with self.argument_context('webpubsub client generate-token') as c:
+        c.argument('user_id', help='The user id.')
+        c.argument('lifetime', help='The token lifetime.')
+        c.argument('permission', arg_type=get_enum_type(PERMISSION_TYPE), nargs='+', help='The permission.')
+
     with self.argument_context('webpubsub service') as c:
         c.argument('hub_name', help='The hub to manage.')
 

@@ -5,6 +5,7 @@
 # pylint: disable=line-too-long
 
 import asyncio
+import datetime
 import sys
 import threading
 import json
@@ -42,6 +43,10 @@ def start_client(client, resource_group_name, webpubsub_name, hub_name):
     token = build_authentication_token(connection_string, hub_name, roles=['webpubsub.sendToGroup', 'webpubsub.joinLeaveGroup'])
     asyncio.get_event_loop().run_until_complete(connect(token['url']))
 
+def generate_token(client, resource_group_name, webpubsub_name, hub_name, user_id=None, lifetime=60, role=None):
+    keys = client.list_keys(resource_group_name, webpubsub_name)
+    connection_string = keys.primary_connection_string
+    return build_authentication_token(connection_string, hub_name, user=user_id, ttl=datetime.timedelta(minutes=lifetime), roles=role)
 
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
