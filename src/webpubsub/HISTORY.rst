@@ -3,6 +3,10 @@
 Release History
 ===============
 
+1.2.0
++++++
+* Update websocket library for new python version.
+
 1.1.0
 ++++++
 * Add `az webpubsub list-usage`
